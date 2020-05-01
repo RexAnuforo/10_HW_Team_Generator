@@ -34,9 +34,17 @@ function createManager(){
         return "Please enter at least one character.";
       }
     },
-
     // STUDENT: Add other questions here!
-
+    {
+      type: "input",
+      message: "What is your email address?",
+      name: "managerEmail"
+   },
+   {
+      type: "input",
+      message: "What is your office number?",
+      name: "managerOffice"
+   }
 
     ]).then(answers => {
       // STUDENT: Process the response by instatiating a new object in the Manager class
