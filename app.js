@@ -131,8 +131,8 @@ function createEngineer() {
     // STUDENT: Make sure the id supplied is unique, then take the data supplied and 
     // instantiate the Engineer constructor.
          let engineerName = answers.engineerName;
-         let engineerId = answers.engineerID;
-         let engineeremail = answers.engineeremail;
+         let engineerId = answers.engineerId;
+         let engineeremail = answers.engineerEmail;
          let engineerGithub = answers.engineerGithub;
          let engineer = new engineer(engineerName, engineerId, engineeremail, engineerGithub);
 
@@ -182,12 +182,18 @@ function createIntern() {
   ]).then(userChoice => {
     // STUDENT: Make sure the id supplied is unique, then take the data supplied and 
     // instantiate the intern constructor.
-    
-    
-    // STUDENT: When finished:
-       // Add the new object to the team member array
-       // Pass control back to the createTeam() function
+    let internName = answers.internName;
+         let internId = answers.internId;
+         let internemail = answers.internEmail;
+         let internGithub = answers.internGithub;
+         let intern = new intern(internName, internId, internEmail, internSchool);
 
+    
+    
+       teamMembers.push(intern);
+            idArray++;
+    
+    
   });
 }
 
@@ -196,7 +202,10 @@ function createIntern() {
 // and pass INTO it the teamMembers area; from there, write the HTML returned back to a file 
 // in a directory called output.
 function renderHtmlPage(){
-
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR)
+  } else {
+    fs.writeFileSync(outputPath, render(teamMembers), "utf-8")
 }
 
 // This is our starter function.
@@ -206,6 +215,9 @@ function startMenu() {
 
   // Here we start things off by calling the createManager function
   createManager()
+  createTeam()
+  createEngineer()
+  createIntern()
 
 }
 
