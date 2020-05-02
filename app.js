@@ -53,6 +53,11 @@ function createManager(){
    }
   ]).then(answers => {
       // STUDENT: Process the response by instatiating a new object in the Manager class
+      let managerName = answers.managerName;
+         let managerId = answers.managerID;
+         let managerEmail = answers.managerEmail;
+         let managerOffice = answers.managerOffice;
+         let manager = new Manager(managerName, managerId, managerEmail, managerOffice);
 
 
       // Now call the next question set
@@ -64,13 +69,28 @@ function createManager(){
 function createTeam() {
   inquirer.prompt([
     // STUDENT: Ask which type of team member should be created with a list of choices
+    
+   {
+    type: "list",
+    message: "which type of team member do you want?",
+    name: "memberPick",
+    choices: ['Manager','Engineer','Intern','N/A']
+ }
 
   ]).then(userChoice => {
     // STUDENT: Based on which choice they make, call the correct function to ask more questions.
     // If no choice is made, then go to the rendering function.
 
-
-  });
+    if (userChoice.memberPick === "Engineer") {
+      createEngineer();
+    } else if (userChoice.memberPick==="Manager"){
+      createManager();
+    }
+    else if (userChoice.memberPick === "Intern") {
+      createIntern();
+    } else {
+      renderHtmlPage();
+    }
 }
 
 // This function starts team creation.
