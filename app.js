@@ -59,7 +59,8 @@ function createManager(){
          let managerOffice = answers.managerOffice;
          let manager = new Manager(managerName, managerId, managerEmail, managerOffice);
 
-
+         teamMembers.push(manager);
+         idArray++;
       // Now call the next question set
       createTeam();
     });
@@ -126,14 +127,21 @@ function createEngineer() {
       name: "engineerGithub"
    }
 
-  ]).then(userChoice => {
+  ]).then(answers => {
     // STUDENT: Make sure the id supplied is unique, then take the data supplied and 
     // instantiate the Engineer constructor.
-    
+         let engineerName = answers.engineerName;
+         let engineerId = answers.engineerID;
+         let engineeremail = answers.engineeremail;
+         let engineerGithub = answers.engineerGithub;
+         let engineer = new engineer(engineerName, engineerId, engineeremail, engineerGithub);
+
     
     // STUDENT: When finished:
        // Add the new object to the team member array
        // Pass control back to the createTeam() function
+       teamMembers.push(engineer);
+            idArray++;
 
   });
 }
