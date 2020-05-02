@@ -40,13 +40,18 @@ function createManager(){
       message: "What is your email address?",
       name: "managerEmail"
    },
+
+   {
+    type: "input",
+    message: "What is your ID?",
+    name: "managerId"
+ },
    {
       type: "input",
       message: "What is your office number?",
       name: "managerOffice"
    }
-
-    ]).then(answers => {
+  ]).then(answers => {
       // STUDENT: Process the response by instatiating a new object in the Manager class
 
 
@@ -72,6 +77,34 @@ function createTeam() {
 function createEngineer() {
   inquirer.prompt([
     // STUDENT:  Engineer questions
+    {
+      type: "input",
+      name: "engineerName",
+      message: "What is your engineer's name?",
+      // Note how the validate function works
+      validate: answer => {
+        if (answer !== "") {
+          return true;
+        }
+        return "Please enter at least one character.";
+      }
+    },
+    {
+      type: "input",
+      message: "What is your email address?",
+      name: "engineerEmail"
+   },
+
+   {
+    type: "input",
+    message: "What is your ID?",
+    name: "engineerId"
+ },
+   {
+      type: "input",
+      message: "What is your github name?",
+      name: "engineerGithub"
+   }
 
   ]).then(userChoice => {
     // STUDENT: Make sure the id supplied is unique, then take the data supplied and 
@@ -86,6 +119,49 @@ function createEngineer() {
 }
 
 // STUDENT: Now create a function for creating an Intern using the code above as an example
+function createIntern() {
+  inquirer.prompt([
+    
+    {
+      type: "input",
+      name: "internName",
+      message: "What is your intern's name?",
+      // Note how the validate function works
+      validate: answer => {
+        if (answer !== "") {
+          return true;
+        }
+        return "Please enter at least one character.";
+      }
+    },
+    {
+      type: "input",
+      message: "What is your email address?",
+      name: "internEmail"
+   },
+
+   {
+    type: "input",
+    message: "What is your ID?",
+    name: "internId"
+ },
+   {
+      type: "input",
+      message: "What is your school name?",
+      name: "internSchool"
+   }
+
+  ]).then(userChoice => {
+    // STUDENT: Make sure the id supplied is unique, then take the data supplied and 
+    // instantiate the intern constructor.
+    
+    
+    // STUDENT: When finished:
+       // Add the new object to the team member array
+       // Pass control back to the createTeam() function
+
+  });
+}
 
 
 // STUDENT: This function will call the render function required near the top (line 12), 
